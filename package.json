@@ -1,0 +1,17 @@
+{
+  "name": "svelte-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "preview": "vite preview",
+	"generate": "node scripts/generate-index.cjs",
+	"dev": "npm run generate && vite",
+	"build": "npm run generate && vite build"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "svelte": "^5.20.2",
+    "vite": "^6.2.0"
+  }
+}

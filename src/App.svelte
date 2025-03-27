@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { fetchFolderData } from './lib/fetchFolderData.js';
   import { formatName } from './lib/formatters.js';
+  import { BASE } from './lib/constants.js';
 
   let folder = '';
   let isSubfolder = false;
@@ -43,11 +44,15 @@
 <main class="wrapper">
   <div class="note-container">
     {#each items as item}
-      <a
-        href={isSubfolder ? `/source/${folder}/${item}` : `/?folder=${item}`}
-        class="note"
-        target={isSubfolder ? "_blank" : "_self"}
-      >
+		<a
+		href={
+		isSubfolder
+			? `${BASE}source/${folder}/${item}`
+			: `${BASE}?folder=${item}`
+		}
+		class="note"
+		target={isSubfolder ? "_blank" : "_self"}
+		>
         <div class="title">{formatName(item)}</div>
         <div class="desc">{isSubfolder ? "Open file" : "View projects"}</div>
       </a>

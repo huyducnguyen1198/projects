@@ -24,6 +24,18 @@
   <div class="header-box">
     <h1>{isSubfolder ? formatName(folder) : "My Project Board"}</h1>
     <p>{headerMessage}</p>
+	<p>
+		👨‍💻 Check out more on 
+		<a href="https://github.com/huyducnguyen1198" target="_blank">my GitHub.</a>
+	</p>
+	<p>
+		📄 My resume is available at 
+		<a href="https://docs.google.com/document/d/1DdrnA7r4DXKh2iGTgdVjGlEv177PJ93D5P9FNTR_4dI/edit?usp=sharing" target="_blank">here.</a>
+	</p>
+	<p>
+		📂 Portfolios:
+		<a href="https://huyducnguyen1198.github.io/CS-portfolio/" target="_blank">here.</a>
+	</p>
   </div>
 </header>
 

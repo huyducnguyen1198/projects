@@ -24,6 +24,16 @@
 	<link rel="icon" type="image/png" href="/brain.png" />
 	<title>Huy's Web Experiments</title>
 	</head>
+	<script>
+		// projects is the folder name 
+		// huyducnguyen1198.github.io/projects
+		const path = window.location.pathname;
+		const sourceMatch = path.match(/^\/projects\/source\/([^\/]+)\/?$/);
+		if (sourceMatch) {
+		  const folder = sourceMatch[1];
+		  window.location.replace(`/projects/?folder=${folder}`);
+		}
+	  </script>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>

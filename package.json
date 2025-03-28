@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "preview": "vite preview",
-    "generate": "node scripts/generate-index.cjs",
+    "generate": "node scripts/generate-index.mjs",
     "dev": "npm run generate && vite",
     "build": "npm run generate && vite build",
 	"deploy": "npm run build && gh-pages -d dist"

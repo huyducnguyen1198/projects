@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Longest Common Subsequence</title>
-	<link rel="stylesheet" href="scripts/styles.css">
+	<link rel="stylesheet" href="scripts/styles.css?v=1.0" />
 </head>
 
 <body>
@@ -67,10 +67,10 @@
 
 			let i = len1;
 			let j = len2;
+			lcsIndexList.push([i, j]);
 			while (i > 0 && j > 0) {
 				if (pickDirection[i][j][0] === "↖") {
 					lcs = str1[i - 1] + lcs;
-					lcsIndexList.push([i, j]);
 					i--;
 					j--;
 				} else if (pickDirection[i][j][0] === "↑") {
@@ -78,6 +78,8 @@
 				} else {
 					j--;
 				}
+				lcsIndexList.push([i, j]);
+
 			}
 
 			return { lcs, pickDirection, lcsIndexList, str1, str2 };
@@ -92,7 +94,7 @@
 
 			const rows = pickDirection.length;
 			const cols = pickDirection[0].length;
-			let html = "<h2>Pick Direction Table</h2><table><tr><th class='label'></th><th class='label'>0</th>";
+			let html = "<h2>Pick Direction Table</h2> <p>Red means matched letter, orange is path</p><table><tr><th class='label'></th><th class='label'>0</th>";
 
 			for (let ch of b) {
 				html += `<th class='label'>${ch}</th>`;
@@ -108,8 +110,17 @@
 				}
 
 				for (let j = 0; j < cols; j++) {
+
 					const isHighlighted = lcsIndexList.some(([x, y]) => x === i && y === j);
-					html += `<td${isHighlighted ? " class='highlight'" : ""}>${pickDirection[i][j]}</td>`;
+					let color_class = ""
+					if(isHighlighted){
+						let cell = pickDirection[i][j];
+						color_class = "class=highlight";
+						if(cell[0] === "↖"){
+							color_class = "class=highlight_diagonal";
+						}
+					}
+					html += `<td ${color_class}>${pickDirection[i][j]}</td>`;
 				}
 				html += "</tr>";
 			}

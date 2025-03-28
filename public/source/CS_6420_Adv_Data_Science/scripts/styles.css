@@ -94,6 +94,11 @@ td.highlight {
 	color: black;
 	font-weight: bold;
 }
+td.highlight_diagonal {
+	background-color: #ff4444;
+	color: black;
+	font-weight: bold;
+}
 
 /* Optional: Add rounded corners to the full table */
 table:first-child {

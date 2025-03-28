@@ -349,7 +349,7 @@ function prepareInitialDistances(nodeSet) {
 function prepareNodes(nodeSet) {
 	return Array.from(nodeSet).sort().map(node => ({
 		id: node,
-		label: `${node} - ∞`,
+		label: node !== startNode ? `${node} - ∞` : `${node} - 0`,
 		color: '#97C2FC'
 	}));
 }

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Longest Common Subsequence</title>
+	<link rel="stylesheet" href="scripts/styles.css">
+</head>
+
+<body>
+
+	<div class="container" style="align-items: center;">
+		<h1 style="text-align: center;">Longest Common Subsequence - Dynamic Programming</h1>
+	  
+		<div style="margin-bottom: 20px;">
+		  <label for="stringA">String A:</label>
+		  <input type="text" id="stringA" value="10010101" style="margin-right: 20px;" />
+	  
+		  <label for="stringB">String B:</label>
+		  <input type="text" id="stringB" value="010110110" />
+		</div>
+	  
+		<button onclick="runLCS()" style="
+		  padding: 5px 10px;
+		  margin: 10px 0;
+		  background-color: #555;
+		  color: white;
+		  border: none;
+		  cursor: pointer;
+		  border-radius: 4px;
+		  width: 100px;
+		">Run LCS</button>
+	  
+		<div class="info" style="margin-top: 20px; text-align: center;">
+		  <strong>LCS:</strong> <span id="lcsResult"></span>
+		</div>
+	  
+		<div id="matrixContainer" style="margin-top: 20px;"></div>
+	  </div>
+	  
+
+	<script>
+		function findLCS(str1, str2) {
+			const len1 = str1.length;
+			const len2 = str2.length;
+			const dp = Array.from({ length: len1 + 1 }, () => Array(len2 + 1).fill(0));
+			const pickDirection = Array.from({ length: len1 + 1 }, () => Array(len2 + 1).fill("0"));
+			let lcs = "";
+			let lcsIndexList = [];
+
+			for (let i = 1; i <= len1; i++) {
+				for (let j = 1; j <= len2; j++) {
+					if (str1[i - 1] === str2[j - 1]) {
+						dp[i][j] = dp[i - 1][j - 1] + 1;
+						pickDirection[i][j] = "↖" + dp[i][j];
+					} else {
+						if (dp[i - 1][j] >= dp[i][j - 1]) {
+							dp[i][j] = dp[i - 1][j];
+							pickDirection[i][j] = "↑" + dp[i][j];
+						} else {
+							dp[i][j] = dp[i][j - 1];
+							pickDirection[i][j] = "←" + dp[i][j];
+						}
+					}
+				}
+			}
+
+			let i = len1;
+			let j = len2;
+			while (i > 0 && j > 0) {
+				if (pickDirection[i][j][0] === "↖") {
+					lcs = str1[i - 1] + lcs;
+					lcsIndexList.push([i, j]);
+					i--;
+					j--;
+				} else if (pickDirection[i][j][0] === "↑") {
+					i--;
+				} else {
+					j--;
+				}
+			}
+
+			return { lcs, pickDirection, lcsIndexList, str1, str2 };
+		}
+
+		function runLCS() {
+			const a = document.getElementById("stringA").value;
+			const b = document.getElementById("stringB").value;
+			const { lcs, pickDirection, lcsIndexList } = findLCS(a, b);
+
+			document.getElementById("lcsResult").textContent = lcs;
+
+			const rows = pickDirection.length;
+			const cols = pickDirection[0].length;
+			let html = "<h2>Pick Direction Table</h2><table><tr><th class='label'></th><th class='label'>0</th>";
+
+			for (let ch of b) {
+				html += `<th class='label'>${ch}</th>`;
+			}
+			html += "</tr>";
+
+			for (let i = 0; i < rows; i++) {
+				html += "<tr>";
+				if (i === 0) {
+					html += "<th class='label'>0</th>";
+				} else {
+					html += `<th class='label'>${a[i - 1]}</th>`;
+				}
+
+				for (let j = 0; j < cols; j++) {
+					const isHighlighted = lcsIndexList.some(([x, y]) => x === i && y === j);
+					html += `<td${isHighlighted ? " class='highlight'" : ""}>${pickDirection[i][j]}</td>`;
+				}
+				html += "</tr>";
+			}
+
+			html += "</table>";
+			document.getElementById("matrixContainer").innerHTML = html;
+		}
+
+		window.onload = function() {
+			// enter = runLCS
+			document.getElementById("stringA").addEventListener("keyup", function(event) {
+				const length_a = document.getElementById("stringA").value.length;
+				if (event.keyCode === 13 && length_a > 0) {
+					event.preventDefault();
+					runLCS();
+				}
+			});
+
+			document.getElementById("stringB").addEventListener("keyup", function(event) {
+				const length_b = document.getElementById("stringB").value.length;
+				if (event.keyCode === 13 && length_b > 0) {
+					event.preventDefault();
+					runLCS();
+				}
+			});
+		};
+			
+		window.onload = runLCS;
+
+	</script>
+
+</body>
+
+</html>

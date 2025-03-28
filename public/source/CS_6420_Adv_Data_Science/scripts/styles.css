@@ -1,0 +1,160 @@
+body {
+	background-color: black;
+	margin: 0;
+	padding: 20px;
+	font-family: Arial, sans-serif;
+	color: #fff;
+}
+
+.container {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.graph-section {
+	display: flex;
+	gap: 20px;
+}
+
+.left-panel {
+	flex: 3;
+	background-color: #1e1e1e;
+	padding: 20px;
+	border-radius: 8px;
+}
+
+.right-panel {
+	flex: 2;
+	display: flex;
+	flex-direction: column;
+	background-color: #1e1e1e;
+	padding: 20px;
+	border-radius: 8px;
+}
+
+.floyd-section {
+	background-color: #1e1e1e;
+	padding: 20px;
+	border-radius: 8px;
+}
+
+#floydWarshall-container {
+	display: flex;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+/* Each panel (left/right) */
+.fw-panel {
+	flex: 1;
+	padding: 10px;
+	background-color: #1e1e1e;
+	border-radius: 6px;
+	overflow-x: auto;
+}
+
+/* General table styling */
+table {
+	border-collapse: collapse;
+	margin-bottom: 30px;
+	width: auto;
+	max-width: 100%;
+	background-color: #2a2a2a;
+	color: white;
+	font-family: monospace;
+	font-size: 14px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Header cells */
+th.label {
+	background-color: #444;
+	color: #fff;
+	padding: 10px 16px;
+	text-align: center;
+	border: 1px solid #666;
+}
+
+/* Data cells */
+td {
+	padding: 10px 16px;
+	text-align: center;
+	border: 1px solid #555;
+	min-width: 40px;
+}
+
+/* Highlighted cells */
+td.highlight {
+	background-color: orange;
+	color: black;
+	font-weight: bold;
+}
+
+/* Optional: Add rounded corners to the full table */
+table:first-child {
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+#mynetwork {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	/* ✅ ensures height = width */
+	max-width: 100%;
+	border: 1px solid #777;
+	background-color: white;
+	border-radius: 5px;
+}
+
+#nodeLabels button:hover {
+	background-color: #ff4444;
+	color: white;
+}
+
+h2,
+h3,
+label {
+	color: #fff;
+}
+
+table,
+th,
+td {
+	border: 1px solid #555;
+	border-collapse: collapse;
+	padding: 5px;
+	color: #fff;
+}
+
+input[type="text"],
+input[type="number"] {
+	padding: 5px;
+	margin-top: 5px;
+	background-color: #333;
+	border: 1px solid #888;
+	color: #fff;
+}
+
+button {
+	padding: 6px 12px;
+	margin-top: 5px;
+	background-color: #555;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+#nodeLabels span {
+	display: inline-block;
+	margin: 5px 5px 5px 0;
+	padding: 6px 12px;
+	border: 1px solid #666;
+	border-radius: 6px;
+	background-color: #2a2a2a;
+	color: #2a2a2a;
+	font-size: 14px;
+	font-weight: 500;
+}

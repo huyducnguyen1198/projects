@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Graph Input Tool</title>
+	<link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet" />
+	<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+	  <link rel="stylesheet" href="scripts/styles.css">
+
+</head>
+
+<body>
+	<h2>Graph Input Tool</h2>
+	<div class="container">
+		<!-- Two-column layout -->
+		<div class="graph-section">
+			<!-- Left Column -->
+			<div class="left-panel">
+				<label>Nodes:</label><br>
+				<div id="nodeLabels"></div><br>
+				<div id="clearAllContainer"></div>
+
+				<label>Add Node:</label><br>
+				<input type="text" id="newNode" placeholder="Enter node name" />
+				<button id="addButton">Add</button><br><br>
+
+				<h3>Adjacency Matrix (Weight Input)</h3>
+				<table id="matrixTable"></table>
+			</div>
+
+			<!-- Right Column -->
+			<div class="right-panel">
+				<h3 style="margin-top: 0;">Graph Visualization</h3>
+				<div id="mynetwork"></div>
+			</div>
+		</div>
+
+		<!-- Below the graph -->
+		<div class="floyd-section">
+			<h2>Floyd Warshall</h2>
+			<div id="floydWarshall-container"></div>
+		</div>
+	</div>
+
+
+	<script src="scripts/graph_input.js"></script>
+	<script type="module" src="scripts/floyd_warshal.js"></script>
+
+</body>
+
+</html>

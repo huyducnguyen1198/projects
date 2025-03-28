@@ -341,7 +341,7 @@ function prepareNodeSet(graph) {
 function prepareInitialDistances(nodeSet) {
 	const dist = {};
 	for (const node of nodeSet) {
-		dist[node] = Infinity;
+		dist[node] = node !== startNode ? Infinity : 0;
 	}
 	return dist;
 }

@@ -12,7 +12,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	padding: 20px;
 }
+
 
 .graph-section {
 	display: flex;
@@ -97,6 +99,21 @@ td.highlight {
 table:first-child {
 	border-radius: 6px;
 	overflow: hidden;
+}
+
+#dijkstra-container {
+    width: 50%; /* Set width to 50% of the parent container */
+    aspect-ratio: 1 / 1; /* Maintain a square aspect ratio */
+    max-width: 100%; /* Ensure it doesn't exceed the parent's width */
+    border: 1px solid #777;
+    background-color: white;
+    border-radius: 5px;
+
+    /* Center the container */
+    margin: auto; /* Center horizontally and vertically */
+    display: flex; /* Enable flexbox for centering */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
 }
 
 #mynetwork {

@@ -1,4 +1,4 @@
-  export async function fetchFolderData(folder) {
+export async function fetchFolderData(folder) {
 	if (folder) {
 	  const [fileListRes, headerRes] = await Promise.all([
 		fetch(`./source/${folder}.json`),
